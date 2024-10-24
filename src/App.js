@@ -1,4 +1,3 @@
-
 import Input from './components/Input';
 import Button from './components/Button';
 
@@ -28,25 +27,49 @@ const App = () => {
         setCurrentNumber('0')
         setOperation('+')
     }else {
-      const sum = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber(String(sum))
+      const sumResult = Number(firstNumber) + Number(currentNumber);
+      setCurrentNumber(String(sumResult))
       setOperation('')
     }
-
   }
 
-  const handleMinusNumbers = () => {
+  const handleSubtractNumbers = () => {
 
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
         setCurrentNumber('0')
         setOperation('-')
     }else {
-      const sum = Number(firstNumber) - Number(currentNumber);
-      setCurrentNumber(String(sum))
+      const subtractionResult = Number(firstNumber) - Number(currentNumber);
+      setCurrentNumber(String(subtractionResult))
       setOperation('')
     }
+  }
 
+  const handleMultiplyNumbers = () => {
+    
+    if(firstNumber === '0'){
+        setFirstNumber(String(currentNumber));
+        setCurrentNumber('0')
+        setOperation('*')
+    }else {
+      const multiplicationResult = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(multiplicationResult))
+      setOperation('')
+    }
+  }
+
+  const handleDivideNumbers = () => {
+    
+    if(firstNumber === '0'){
+        setFirstNumber(String(currentNumber));
+        setCurrentNumber('0')
+        setOperation('/')
+    }else {
+      const divisionResult = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(String(divisionResult))
+      setOperation('')
+    }
   }
 
   const handleEquals = () => {
@@ -57,30 +80,41 @@ const App = () => {
             handleSumNumbers();
             break;
           case '-':
-            handleMinusNumbers();
+            handleSubtractNumbers();
+            break;
+          case '*':
+            handleMultiplyNumbers();
+            break;
+          case '/':
+            handleDivideNumbers();
             break;
           default: 
             break;
         }
     }
-
   }
+
+  const handleAddDot = () => {
+    if (!currentNumber.includes('.')) {
+      setCurrentNumber(prev => `${prev}.`);
+    }
+  };
 
   return (
     <Container>
       <Content>
         <Input value={currentNumber}/>
         <Row>
-          <Button label="x"/>
-          <Button label="/"/>
-          <Button label="c" onClick={handleOnClear}/>
-          <Button label="."/>
+          <Button label="C" onClick={handleOnClear}/>
+          <Button label="." onClick={handleAddDot}/>
+          <Button label="/" onClick={handleDivideNumbers}/>
+          <Button label="x" onClick={handleMultiplyNumbers}/>
         </Row>
         <Row>
           <Button label="7" onClick={() => handleAddNumber('7')}/>
           <Button label="8" onClick={() => handleAddNumber('8')}/>
           <Button label="9" onClick={() => handleAddNumber('9')}/>
-          <Button label="-" onClick={handleMinusNumbers}/>
+          <Button label="-" onClick={handleSubtractNumbers}/>
         </Row>
         <Row>
           <Button label="4" onClick={() => handleAddNumber('4')}/>
