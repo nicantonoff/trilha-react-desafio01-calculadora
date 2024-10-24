@@ -12,6 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Caveat
+
+The calculator does not support consecutive operations. For example, `1 + 2 + 3`. It only supports one operation at a time.
+
 ## Available Scripts
 
 ### `npm test`
